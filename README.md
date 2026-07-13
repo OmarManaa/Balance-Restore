@@ -1,16 +1,12 @@
-# Balance & Restore website
+# Balance & Restore — Stage 2
 
-Upload all files and the `assets` folder to your GitHub repository.
+This version adds editable controls for prices, durations, show/hide services, promotion dates, practitioner profile, testimonials, FAQs, contact/social links, policies, images, and section visibility.
 
-## Control panel
-
-This repository includes `.pages.yml` for Pages CMS.
-
-1. Go to https://app.pagescms.org
-2. Sign in with GitHub.
+## Admin panel
+1. Upload all files to GitHub, including `.pages.yml`, `content.json`, and `assets/`.
+2. Sign in at https://app.pagescms.org with GitHub.
 3. Select `OmarManaa/Balance-Restore`.
-4. Open **Website content**.
-5. Edit the wording, services, offer, booking link, logo, banner or poster.
-6. Save. The change is committed to GitHub and Cloudflare redeploys automatically.
+4. Open **Website management** and edit the fields.
+5. Save. Pages CMS commits the changes to GitHub and Cloudflare redeploys automatically.
 
-Use Setmore separately to manage appointments, services, availability and reminders.
+Setmore continues to manage bookings, availability, reminders, cancellations and payments.

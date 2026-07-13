@@ -1,20 +1,83 @@
 {
-  "business_name": "Balance & Restore",
-  "tagline": "Restoring balance through the Sunnah and professional care.",
-  "qualification": "Certified Hijama Practitioner | Qualified Nutritionist",
-  "intro": "Experience Hijama (Wet Cupping Therapy) in a clean, calm and welcoming environment where traditional practice is combined with modern standards of hygiene and compassionate, client-centred care.",
-  "location": "Doncaster East, Melbourne",
-  "booking_note": "Appointments by booking only",
-  "booking_url": "https://balancerestorecppm.setmore.com",
-  "offer_title": "20% off for first-time Hijama clients",
-  "offer_text": "Available for new clients. Terms may apply.",
+  "site": {
+    "business_name": "Balance & Restore",
+    "tagline": "Restoring balance through the Sunnah and professional care.",
+    "qualification": "Certified Hijama Practitioner | Qualified Nutritionist",
+    "intro": "Experience Hijama (Wet Cupping Therapy) in a clean, calm and welcoming environment where traditional practice is combined with modern standards of hygiene and compassionate, client-centred care.",
+    "location": "Doncaster East, Melbourne",
+    "booking_note": "Appointments by booking only",
+    "booking_url": "https://balancerestorecppm.setmore.com",
+    "email": "",
+    "whatsapp_url": "",
+    "instagram_url": "",
+    "facebook_url": "",
+    "show_poster": true,
+    "show_offer": true,
+    "show_testimonials": true,
+    "show_faq": true,
+    "logo": "/assets/logo.jpeg",
+    "banner": "/assets/banner.jpeg",
+    "poster": "/assets/poster.jpeg"
+  },
+  "practitioner": {
+    "heading": "Professional, calm and compassionate care",
+    "bio": "Each appointment begins with a personal consultation to discuss your goals, relevant health history and treatment suitability. Treatments are provided in a private women-only setting with careful attention to hygiene, comfort and aftercare.",
+    "qualifications": [
+      "Certified Hijama Practitioner",
+      "Qualified Nutritionist",
+      "Infection-control trained"
+    ]
+  },
+  "promotion": {
+    "title": "20% off for first-time Hijama clients",
+    "description": "Available for new clients. Terms may apply.",
+    "start_date": "",
+    "end_date": "",
+    "button_text": "Book the introductory offer"
+  },
   "services": [
-    "Hijama Using Sunnah Points",
-    "Upper Back & Shoulders",
-    "Lower Back",
-    "Women’s Health Support",
-    "Digestive Health Support",
-    "Full Body Hijama"
+    {
+      "name": "Hijama Using Sunnah Points",
+      "description": "Traditional Hijama using appropriate Sunnah points following consultation.",
+      "price": "$100",
+      "duration": "45–60 minutes",
+      "enabled": true
+    },
+    {
+      "name": "Upper Back & Shoulders",
+      "description": "A focused session for the upper back and shoulder area.",
+      "price": "$100",
+      "duration": "45–60 minutes",
+      "enabled": true
+    },
+    {
+      "name": "Lower Back",
+      "description": "A personalised cupping session focused on the lower back.",
+      "price": "$100",
+      "duration": "45–60 minutes",
+      "enabled": true
+    },
+    {
+      "name": "Women’s Health Support",
+      "description": "A respectful and individualised approach supporting general wellbeing.",
+      "price": "$100",
+      "duration": "45–60 minutes",
+      "enabled": true
+    },
+    {
+      "name": "Digestive Health Support",
+      "description": "A personalised session planned around comfort and general wellbeing goals.",
+      "price": "$100",
+      "duration": "45–60 minutes",
+      "enabled": true
+    },
+    {
+      "name": "Full Body Hijama",
+      "description": "A longer and more comprehensive session discussed during consultation.",
+      "price": "Priced separately",
+      "duration": "Contact to discuss",
+      "enabled": true
+    }
   ],
   "expectations": [
     "Women-only practice",
@@ -23,9 +86,34 @@
     "Sterile single-use equipment",
     "Professional before and aftercare guidance"
   ],
-  "quote": "The best medicine with which you treat yourselves is Hijama, or it is one of the best of your medicines.",
-  "disclaimer": "Hijama is a complementary wellbeing service and is not a substitute for medical diagnosis, treatment or emergency care.",
-  "logo": "/assets/logo.jpeg",
-  "banner": "/assets/banner.jpeg",
-  "poster": "/assets/poster.jpeg"
+  "testimonials": [
+    {
+      "name": "Client testimonial",
+      "text": "Add an approved client testimonial here.",
+      "enabled": false
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What should I do before my appointment?",
+      "answer": "Follow the preparation instructions provided when booking. Contact the practitioner if you have questions about medications, pregnancy, recent surgery or a health condition.",
+      "enabled": true
+    },
+    {
+      "question": "How long can cupping marks last?",
+      "answer": "Temporary marks can vary between clients and may remain visible for several days. Aftercare guidance will be provided.",
+      "enabled": true
+    },
+    {
+      "question": "Is Hijama a replacement for medical care?",
+      "answer": "No. Hijama is a complementary wellbeing service and does not replace medical diagnosis, treatment or emergency care.",
+      "enabled": true
+    }
+  ],
+  "policies": {
+    "cancellation": "Please provide reasonable notice if you need to cancel or reschedule your appointment. The detailed cancellation policy is available through the booking page.",
+    "privacy": "Personal information collected for enquiries and bookings is handled only for providing and managing services.",
+    "disclaimer": "Hijama is a complementary wellbeing service and is not a substitute for medical diagnosis, treatment or emergency care. Medical clearance may be requested where appropriate."
+  },
+  "quote": "The best medicine with which you treat yourselves is Hijama, or it is one of the best of your medicines."
 }
