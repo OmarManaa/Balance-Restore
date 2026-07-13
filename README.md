@@ -1,21 +1,16 @@
-# Restore Cupping Website
+# Balance & Restore website
 
-Simple one-page website for Restore Cupping.
+Upload all files and the `assets` folder to your GitHub repository.
 
-## Files
+## Control panel
 
-- `index.html` — website content
-- `styles.css` — design and responsive layout
-- `script.js` — mobile menu and automatic footer year
+This repository includes `.pages.yml` for Pages CMS.
 
-## Booking link
+1. Go to https://app.pagescms.org
+2. Sign in with GitHub.
+3. Select `OmarManaa/Balance-Restore`.
+4. Open **Website content**.
+5. Edit the wording, services, offer, booking link, logo, banner or poster.
+6. Save. The change is committed to GitHub and Cloudflare redeploys automatically.
 
-The booking buttons currently point to:
-
-https://balancerestorecppm.setmore.com
-
-## Before publishing
-
-Update the email address in `index.html` if required:
-
-hello@restore-cupping.com
+Use Setmore separately to manage appointments, services, availability and reminders.

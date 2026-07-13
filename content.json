@@ -1,0 +1,31 @@
+{
+  "business_name": "Balance & Restore",
+  "tagline": "Restoring balance through the Sunnah and professional care.",
+  "qualification": "Certified Hijama Practitioner | Qualified Nutritionist",
+  "intro": "Experience Hijama (Wet Cupping Therapy) in a clean, calm and welcoming environment where traditional practice is combined with modern standards of hygiene and compassionate, client-centred care.",
+  "location": "Doncaster East, Melbourne",
+  "booking_note": "Appointments by booking only",
+  "booking_url": "https://balancerestorecppm.setmore.com",
+  "offer_title": "20% off for first-time Hijama clients",
+  "offer_text": "Available for new clients. Terms may apply.",
+  "services": [
+    "Hijama Using Sunnah Points",
+    "Upper Back & Shoulders",
+    "Lower Back",
+    "Women’s Health Support",
+    "Digestive Health Support",
+    "Full Body Hijama"
+  ],
+  "expectations": [
+    "Women-only practice",
+    "Personal consultation and assessment",
+    "Dry & Wet Cupping Therapy",
+    "Sterile single-use equipment",
+    "Professional before and aftercare guidance"
+  ],
+  "quote": "The best medicine with which you treat yourselves is Hijama, or it is one of the best of your medicines.",
+  "disclaimer": "Hijama is a complementary wellbeing service and is not a substitute for medical diagnosis, treatment or emergency care.",
+  "logo": "/assets/logo.jpeg",
+  "banner": "/assets/banner.jpeg",
+  "poster": "/assets/poster.jpeg"
+}
