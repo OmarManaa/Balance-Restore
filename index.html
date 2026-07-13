@@ -1,324 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Restore Cupping provides professional women-only Hijama and wet cupping services in Doncaster East, Melbourne."
-    >
-
-    <title>Restore Cupping | Hijama in Melbourne</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: #27332c;
-            background: #f7f5ef;
-        }
-
-        header {
-            background: #71806d;
-            color: white;
-            padding: 18px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .brand {
-            font-size: 1.35rem;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 18px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 70px 20px;
-            text-align: center;
-            background:
-                linear-gradient(
-                    rgba(247, 245, 239, 0.92),
-                    rgba(247, 245, 239, 0.92)
-                );
-        }
-
-        .hero-content {
-            max-width: 760px;
-        }
-
-        h1 {
-            margin-bottom: 15px;
-            font-size: clamp(2.4rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            color: #596855;
-        }
-
-        h2 {
-            color: #596855;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 13px 25px;
-            border-radius: 7px;
-            background: #71806d;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .button:hover {
-            background: #596855;
-        }
-
-        section {
-            padding: 65px 8%;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .services {
-            background: white;
-        }
-
-        .service-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-        }
-
-        .service-card {
-            padding: 25px;
-            border-radius: 10px;
-            background: #f1efe8;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-        }
-
-        .about,
-        .contact {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .notice {
-            max-width: 800px;
-            margin: 30px auto 0;
-            padding: 18px;
-            border-left: 4px solid #71806d;
-            background: #ece9df;
-            text-align: left;
-        }
-
-        footer {
-            padding: 25px;
-            background: #27332c;
-            color: white;
-            text-align: center;
-        }
-
-        @media (max-width: 700px) {
-            header {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 0 8px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Restore Cupping offers professional women-only Hijama and wet cupping services in Doncaster East, Melbourne.">
+  <title>Restore Cupping | Women-Only Hijama in Melbourne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <div class="brand">Restore Cupping</div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Restore Cupping home">
+        <span class="brand-mark">◌</span>
+        <span>Restore Cupping</span>
+      </a>
 
-        <nav>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Book</a>
-        </nav>
-    </header>
+      <button class="menu-button" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <p>Certified Hijama Practitioner | Qualified Nutritionist</p>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#expect">What to Expect</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-book" href="https://balancerestorecppm.setmore.com" target="_blank" rel="noopener noreferrer">Book Now</a>
+      </nav>
+    </div>
+  </header>
 
-                <h1>Restore Cupping</h1>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Certified Hijama Practitioner | Qualified Nutritionist</p>
+          <h1>Restoring balance through the Sunnah and professional care.</h1>
+          <p class="hero-text">
+            Professional women-only Hijama and wet cupping services in a calm,
+            clean and welcoming home-based setting in Doncaster East, Melbourne.
+          </p>
 
-                <p class="subtitle">
-                    Restoring balance through the Sunnah and
-                    professional care.
-                </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://balancerestorecppm.setmore.com" target="_blank" rel="noopener noreferrer">Book an Appointment</a>
+            <a class="button secondary" href="#services">View Services</a>
+          </div>
 
-                <p>
-                    Professional women-only Hijama and wet cupping
-                    services in a clean, calm and welcoming environment.
-                </p>
+          <div class="hero-points">
+            <span>Women-only practice</span>
+            <span>Sterile single-use equipment</span>
+            <span>Appointments by booking</span>
+          </div>
+        </div>
 
-                <a
-                    class="button"
-                    href="#contact"
-                >
-                    Book an Appointment
-                </a>
-            </div>
-        </section>
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <p class="card-label">Restore Cupping</p>
+            <h2>Personalised Hijama care</h2>
+            <p>
+              Every appointment begins with a consultation to discuss your
+              goals, health history and treatment suitability.
+            </p>
+            <a href="https://balancerestorecppm.setmore.com" target="_blank" rel="noopener noreferrer">Check available appointments →</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section
-            class="services"
-            id="services"
-        >
-            <div class="section-heading">
-                <h2>Our Services</h2>
-                <p>
-                    Treatments are personalised following an initial
-                    consultation and assessment.
-                </p>
-            </div>
+    <section class="section" id="about">
+      <div class="container two-column">
+        <div>
+          <p class="section-kicker">About</p>
+          <h2>Traditional practice with modern standards of care</h2>
+        </div>
+        <div class="body-copy">
+          <p>
+            Restore Cupping provides respectful, client-centred Hijama and
+            cupping services for women. Treatments are delivered in a private
+            and welcoming environment with attention to hygiene, comfort and
+            clear aftercare.
+          </p>
+          <p>
+            Sessions are adapted to the individual following an initial
+            consultation and safety assessment.
+          </p>
+        </div>
+      </div>
+    </section>
 
-            <div class="service-grid">
-                <article class="service-card">
-                    <h3>Sunnah Points</h3>
-                    <p>
-                        Hijama treatment using appropriate traditional
-                        Sunnah points.
-                    </p>
-                </article>
+    <section class="section soft-bg" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Services</p>
+          <h2>Simple, personalised treatment options</h2>
+          <p>
+            Most standard treatments are priced at $100. Full-body Hijama is
+            priced separately depending on the session plan.
+          </p>
+        </div>
 
-                <article class="service-card">
-                    <h3>Back and Shoulders</h3>
-                    <p>
-                        Cupping treatment focused on the upper back,
-                        shoulders or lower back.
-                    </p>
-                </article>
+        <div class="cards">
+          <article class="service-card">
+            <h3>Hijama Using Sunnah Points</h3>
+            <p>Traditional Hijama using appropriate Sunnah points following consultation.</p>
+          </article>
 
-                <article class="service-card">
-                    <h3>Women's Health Support</h3>
-                    <p>
-                        A respectful and individualised approach for
-                        women's general wellbeing.
-                    </p>
-                </article>
+          <article class="service-card">
+            <h3>Upper Back & Shoulders</h3>
+            <p>A focused session for the upper back and shoulder area.</p>
+          </article>
 
-                <article class="service-card">
-                    <h3>Full-Body Hijama</h3>
-                    <p>
-                        A more comprehensive session discussed and
-                        planned during consultation.
-                    </p>
-                </article>
-            </div>
-        </section>
+          <article class="service-card">
+            <h3>Lower Back</h3>
+            <p>A personalised cupping session focused on the lower back.</p>
+          </article>
 
-        <section id="about">
-            <div class="about">
-                <h2>Professional and Compassionate Care</h2>
+          <article class="service-card">
+            <h3>Women’s Wellbeing Support</h3>
+            <p>A respectful, individualised approach to support general wellbeing.</p>
+          </article>
 
-                <p>
-                    Restore Cupping offers dry and wet cupping therapy
-                    using sterile, single-use equipment and careful
-                    infection-control practices.
-                </p>
+          <article class="service-card">
+            <h3>Digestive Wellbeing Support</h3>
+            <p>Cupping treatment planned around your comfort and general wellbeing goals.</p>
+          </article>
 
-                <p>
-                    Every client receives a personal consultation,
-                    assessment, and professional before-and-aftercare
-                    guidance.
-                </p>
+          <article class="service-card">
+            <h3>Full-Body Hijama</h3>
+            <p>A longer, more comprehensive session discussed during consultation.</p>
+          </article>
+        </div>
 
-                <div class="notice">
-                    Hijama is a complementary therapy and does not
-                    replace medical diagnosis or treatment. Please
-                    consult an appropriate healthcare professional
-                    regarding medical symptoms or concerns.
-                </div>
-            </div>
-        </section>
+        <div class="center">
+          <a class="button primary" href="https://balancerestorecppm.setmore.com" target="_blank" rel="noopener noreferrer">View Times & Book</a>
+        </div>
+      </div>
+    </section>
 
-        <section
-            class="services"
-            id="contact"
-        >
-            <div class="contact">
-                <h2>Book an Appointment</h2>
+    <section class="section" id="expect">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">What to expect</p>
+          <h2>Professional, calm and compassionate care</h2>
+        </div>
 
-                <p>
-                    Women-only practice located in Doncaster East,
-                    Melbourne.
-                </p>
+        <div class="expect-grid">
+          <div class="expect-item">
+            <span>01</span>
+            <h3>Consultation</h3>
+            <p>We discuss your goals, health history and whether treatment is suitable.</p>
+          </div>
 
-                <p>Appointments are available by booking only.</p>
+          <div class="expect-item">
+            <span>02</span>
+            <h3>Personalised session</h3>
+            <p>Dry or wet cupping is selected and adapted based on your assessment.</p>
+          </div>
 
-                <!-- Replace the number below with your WhatsApp number.
-                     Use the Australian format without +, spaces or 0.
-                     Example: 61412345678
-                -->
+          <div class="expect-item">
+            <span>03</span>
+            <h3>Aftercare</h3>
+            <p>You receive clear guidance about hydration, skin care and recovery.</p>
+          </div>
+        </div>
 
-                <a
-                    class="button"
-                    href="https://wa.me/61466997921"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Contact Us on WhatsApp
-                </a>
-            </div>
-        </section>
-    </main>
+        <div class="notice">
+          <strong>Important:</strong> Hijama is a complementary wellbeing service
+          and is not a substitute for medical diagnosis, treatment or emergency
+          care. Medical clearance may be requested where appropriate.
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <p>
-            &copy; <span id="year"></span> Restore Cupping.
-            All rights reserved.
-        </p>
-    </footer>
+    <section class="section contact-section" id="contact">
+      <div class="container contact-card">
+        <div>
+          <p class="section-kicker">Book your appointment</p>
+          <h2>Restore Cupping</h2>
+          <p>Women-only practice in Doncaster East, Melbourne.</p>
+          <p>Appointments are available by booking only.</p>
+        </div>
 
-    <script>
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-    </script>
+        <div class="contact-actions">
+          <a class="button primary" href="https://balancerestorecppm.setmore.com" target="_blank" rel="noopener noreferrer">Book with Setmore</a>
+          <a class="button secondary" href="mailto:hello@restore-cupping.com">Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Restore Cupping. All rights reserved.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
