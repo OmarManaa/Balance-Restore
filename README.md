@@ -1,12 +1,14 @@
-# Balance & Restore — Stage 2
+# Balance & Restore custom admin v1
 
-This version adds editable controls for prices, durations, show/hide services, promotion dates, practitioner profile, testimonials, FAQs, contact/social links, policies, images, and section visibility.
+Includes a public website, `/admin/` dashboard, Cloudflare D1 storage and Cloudflare Access-compatible protection.
 
-## Admin panel
-1. Upload all files to GitHub, including `.pages.yml`, `content.json`, and `assets/`.
-2. Sign in at https://app.pagescms.org with GitHub.
-3. Select `OmarManaa/Balance-Restore`.
-4. Open **Website management** and edit the fields.
-5. Save. Pages CMS commits the changes to GitHub and Cloudflare redeploys automatically.
-
-Setmore continues to manage bookings, availability, reminders, cancellations and payments.
+## Setup
+1. `npm install`
+2. `npx wrangler login`
+3. `npm run db:create`
+4. Copy the D1 database ID into `wrangler.jsonc`.
+5. Replace `REPLACE_WITH_YOUR_EMAIL` with your login email.
+6. `npm run db:migrate:remote`
+7. Push to GitHub and set Cloudflare deploy command to `npm run deploy`.
+8. Protect `/admin/*` and `/api/admin/*` with Cloudflare Access, allowing only your email.
+9. Open `https://restore-cupping.com/admin/`.
