@@ -1,0 +1,28 @@
+{
+	"name": "balance-restore",
+	"main": "src/worker.js",
+	"compatibility_date": "2026-07-13",
+	"assets": {
+		"directory": "./public",
+		"binding": "ASSETS",
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "balance-restore-db",
+			"database_id": "9ffddd1e-73b3-4a75-af53-44e5c4012823"
+		},
+		{
+			"binding": "balance_restore_db",
+			"database_name": "balance-restore-db",
+			"database_id": "9ffddd1e-73b3-4a75-af53-44e5c4012823",
+			"remote": true
+		}
+	],
+	"vars": {
+		"ADMIN_EMAIL": "haneen.jalal@gmail.com"
+	}
+}

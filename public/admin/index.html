@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Balance & Restore Admin</title><link rel="stylesheet" href="/admin/admin.css"></head>
+<body><header><div><strong>Balance & Restore</strong><span>Website Admin</span></div><a href="/" target="_blank">View website ↗</a></header>
+<main><div id="status" class="status">Loading website content…</div><form id="editor">
+<section><h2>General</h2><label>Business name<input name="businessName"></label><label>Main tagline<textarea name="tagline"></textarea></label><label>Qualifications<input name="qualification"></label><label>Introduction<textarea name="intro"></textarea></label><div class="two"><label>Location<input name="location"></label><label>Booking note<input name="bookingNote"></label></div><label>Setmore booking URL<input name="bookingUrl" type="url"></label></section>
+<section><h2>Promotion</h2><label class="switch"><input name="offerEnabled" type="checkbox"> Show promotion</label><label>Promotion title<input name="offerTitle"></label><label>Promotion details<textarea name="offerText"></textarea></label></section>
+<section><h2>Display</h2><label class="switch"><input name="posterEnabled" type="checkbox"> Show poster</label><label class="switch"><input name="faqEnabled" type="checkbox"> Show FAQs</label></section>
+<section><h2>Services</h2><div id="services"></div><button type="button" id="addService" class="secondary">+ Add service</button></section>
+<section><h2>FAQs</h2><div id="faqs"></div><button type="button" id="addFaq" class="secondary">+ Add FAQ</button></section>
+<section><h2>Policies</h2><label>Cancellation policy<textarea name="cancellationPolicy"></textarea></label><label>Privacy wording<textarea name="privacyText"></textarea></label><label>Health disclaimer<textarea name="disclaimer"></textarea></label></section>
+<div class="savebar"><button type="submit">Save and publish</button></div></form></main><script src="/admin/admin.js"></script></body></html>
