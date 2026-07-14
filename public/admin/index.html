@@ -1,11 +1,97 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Balance & Restore Admin</title><link rel="stylesheet" href="/admin/admin.css"></head>
-<body><header><div><strong>Balance & Restore</strong><span>Website Admin</span></div><a href="/" target="_blank">View website ↗</a></header>
-<main><div id="status" class="status">Loading website content…</div><form id="editor">
-<section><h2>General</h2><label>Business name<input name="businessName"></label><label>Main tagline<textarea name="tagline"></textarea></label><label>Qualifications<input name="qualification"></label><label>Introduction<textarea name="intro"></textarea></label><div class="two"><label>Location<input name="location"></label><label>Booking note<input name="bookingNote"></label></div><label>Setmore booking URL<input name="bookingUrl" type="url"></label></section>
-<section><h2>Promotion</h2><label class="switch"><input name="offerEnabled" type="checkbox"> Show promotion</label><label>Promotion title<input name="offerTitle"></label><label>Promotion details<textarea name="offerText"></textarea></label></section>
-<section><h2>Display</h2><label class="switch"><input name="posterEnabled" type="checkbox"> Show poster</label><label class="switch"><input name="faqEnabled" type="checkbox"> Show FAQs</label></section>
-<section><h2>Services</h2><div id="services"></div><button type="button" id="addService" class="secondary">+ Add service</button></section>
-<section><h2>FAQs</h2><div id="faqs"></div><button type="button" id="addFaq" class="secondary">+ Add FAQ</button></section>
-<section><h2>Policies</h2><label>Cancellation policy<textarea name="cancellationPolicy"></textarea></label><label>Privacy wording<textarea name="privacyText"></textarea></label><label>Health disclaimer<textarea name="disclaimer"></textarea></label></section>
-<div class="savebar"><button type="submit">Save and publish</button></div></form></main><script src="/admin/admin.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Balance & Restore Admin</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<header class="admin-header">
+  <div><strong>Balance & Restore</strong><span>Website Manager</span></div>
+  <div><span id="saveState">Saved</span><a href="/" target="_blank">View website ↗</a></div>
+</header>
+<div class="admin-shell">
+  <aside class="sidebar">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="general">General</button>
+    <button class="tab" data-tab="theme">Theme</button>
+    <button class="tab" data-tab="sections">Sections</button>
+    <button class="tab" data-tab="services">Services</button>
+    <button class="tab" data-tab="offer">Promotion</button>
+    <button class="tab" data-tab="about">About</button>
+    <button class="tab" data-tab="faqs">FAQs</button>
+    <button class="tab" data-tab="testimonials">Testimonials</button>
+    <button class="tab" data-tab="contact">Contact</button>
+    <button class="tab" data-tab="policies">Policies</button>
+    <button class="tab" data-tab="seo">SEO</button>
+  </aside>
+  <main>
+    <div id="status" class="status">Loading content…</div>
+    <form id="editor">
+      <section class="panel active" data-panel="dashboard">
+        <h1>Website dashboard</h1>
+        <div id="dashboardCards" class="summary-grid"></div>
+        <div class="help-box"><strong>How it works</strong><p>Edit a section, then click <b>Save and publish</b>. Changes appear on the live website immediately.</p></div>
+      </section>
+
+      <section class="panel" data-panel="general">
+        <h1>General website details</h1>
+        <div class="field-grid">
+          <label>Business name<input name="businessName"></label>
+          <label>Qualifications<input name="qualification"></label>
+          <label class="full">Main tagline<textarea name="tagline"></textarea></label>
+          <label class="full">Introduction<textarea name="intro"></textarea></label>
+          <label>Location<input name="location"></label>
+          <label>Booking note<input name="bookingNote"></label>
+          <label class="full">Setmore booking URL<input name="bookingUrl" type="url"></label>
+          <label>Opening hours<input name="openingHours"></label>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="theme">
+        <h1>Theme and appearance</h1>
+        <div class="preset-row">
+          <button type="button" class="preset" data-preset="olive-gold">Olive & Gold</button>
+          <button type="button" class="preset" data-preset="soft-sage">Soft Sage</button>
+          <button type="button" class="preset" data-preset="warm-cream">Warm Cream</button>
+          <button type="button" class="preset" data-preset="modern-minimal">Modern Minimal</button>
+        </div>
+        <div class="theme-grid">
+          <label>Primary colour<input type="color" name="theme.primary"></label>
+          <label>Dark colour<input type="color" name="theme.primaryDark"></label>
+          <label>Accent colour<input type="color" name="theme.accent"></label>
+          <label>Page background<input type="color" name="theme.background"></label>
+          <label>Section background<input type="color" name="theme.surface"></label>
+          <label>Text colour<input type="color" name="theme.text"></label>
+          <label>Heading font<select name="theme.headingFont"><option>Georgia</option><option>Arial</option><option>Verdana</option><option>Trebuchet MS</option></select></label>
+          <label>Body font<select name="theme.bodyFont"><option>Arial</option><option>Verdana</option><option>Trebuchet MS</option><option>Georgia</option></select></label>
+          <label>Header style<select name="theme.headerStyle"><option value="light">Light</option><option value="dark">Dark</option></select></label>
+          <label>Hero layout<select name="theme.heroLayout"><option value="split">Split</option><option value="center">Centred</option></select></label>
+          <label>Card shadow<select name="theme.shadow"><option value="none">None</option><option value="soft">Soft</option><option value="strong">Strong</option></select></label>
+          <label>Content width<input type="range" min="900" max="1300" step="20" name="theme.contentWidthNumber"><span class="range-value"></span></label>
+          <label>Section spacing<input type="range" min="40" max="120" name="theme.sectionSpacing"><span class="range-value"></span></label>
+          <label>Card roundness<input type="range" min="0" max="32" name="theme.cardRadius"><span class="range-value"></span></label>
+          <label>Button roundness<input type="range" min="0" max="999" step="10" name="theme.buttonRadius"><span class="range-value"></span></label>
+          <label>Logo size<input type="range" min="36" max="100" name="theme.logoSize"><span class="range-value"></span></label>
+          <label>Banner height<input type="range" min="180" max="600" step="10" name="theme.bannerHeight"><span class="range-value"></span></label>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="sections"><h1>Sections and visibility</h1><div id="sectionControls"></div></section>
+      <section class="panel" data-panel="services"><div class="panel-title"><h1>Services</h1><button type="button" id="addService" class="secondary">+ Add service</button></div><div id="services"></div></section>
+      <section class="panel" data-panel="offer"><h1>Promotion</h1><label class="switch"><input name="offer.enabled" type="checkbox"> Show promotion</label><label>Promotion title<input name="offer.title"></label><label>Promotion details<textarea name="offer.text"></textarea></label><label>Button text<input name="offer.buttonText"></label><div class="two"><label>Start date<input name="offer.startDate" type="date"></label><label>End date<input name="offer.endDate" type="date"></label></div></section>
+      <section class="panel" data-panel="about"><h1>About section</h1><label>Heading<input name="about.heading"></label><label>About text<textarea name="about.text"></textarea></label><div id="qualifications"></div><button type="button" id="addQualification" class="secondary">+ Add qualification</button></section>
+      <section class="panel" data-panel="faqs"><div class="panel-title"><h1>FAQs</h1><button type="button" id="addFaq" class="secondary">+ Add FAQ</button></div><div id="faqs"></div></section>
+      <section class="panel" data-panel="testimonials"><div class="panel-title"><h1>Testimonials</h1><button type="button" id="addTestimonial" class="secondary">+ Add testimonial</button></div><div id="testimonials"></div></section>
+      <section class="panel" data-panel="contact"><h1>Contact and social links</h1><div class="field-grid"><label>Email<input name="email" type="email"></label><label>WhatsApp URL<input name="whatsappUrl" type="url"></label><label>Instagram URL<input name="instagramUrl" type="url"></label><label>Facebook URL<input name="facebookUrl" type="url"></label></div></section>
+      <section class="panel" data-panel="policies"><h1>Policies and disclaimer</h1><label>Cancellation policy<textarea name="policies.cancellation"></textarea></label><label>Privacy wording<textarea name="policies.privacy"></textarea></label><label>Health disclaimer<textarea name="policies.disclaimer"></textarea></label></section>
+      <section class="panel" data-panel="seo"><h1>Search engine settings</h1><label>Page title<input name="seo.title"></label><label>Meta description<textarea name="seo.description"></textarea></label><label>Social sharing title<input name="seo.socialTitle"></label><label>Canonical URL<input name="seo.canonicalUrl" type="url"></label></section>
+
+      <div class="savebar"><button type="button" id="discardButton" class="ghost">Discard changes</button><button type="submit">Save and publish</button></div>
+    </form>
+  </main>
+</div>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
