@@ -1,7 +1,94 @@
 const $=id=>document.getElementById(id);
-const setText=(id,v)=>{const e=$(id);if(e)e.textContent=v||''};
-function applyTheme(t){const r=document.documentElement.style;const map={'--primary':t.primary,'--primary-dark':t.primaryDark,'--accent':t.accent,'--background':t.background,'--surface':t.surface,'--text':t.text,'--muted':t.muted,'--border':t.border,'--content-width':t.contentWidth,'--section-spacing':`${t.sectionSpacing}px`,'--card-radius':`${t.cardRadius}px`,'--button-radius':`${t.buttonRadius}px`,'--logo-size':`${t.logoSize}px`,'--banner-height':`${t.bannerHeight}px`,'--heading-font':`${t.headingFont},serif`,'--body-font':`${t.bodyFont},sans-serif`};Object.entries(map).forEach(([k,v])=>v&&r.setProperty(k,v));const shadows={none:'none',soft:'0 18px 45px rgba(52,66,38,.10)',strong:'0 24px 60px rgba(52,66,38,.20)'};r.setProperty('--shadow',shadows[t.shadow]||shadows.soft);$('siteHeader').className=`topbar ${t.headerStyle||'light'}`;$('heroGrid').className=`container hero-grid ${t.heroLayout==='center'?'center':''}`}
-function vis(name,on){document.querySelectorAll(`[data-section="${name}"]`).forEach(e=>e.classList.toggle('hidden',!on))}
-function reorder(order){const p=$('pageSections');order.forEach(name=>{const e=p.querySelector(`[data-section="${name}"]`);if(e)p.appendChild(e)})}
-async function start(){const c=await(await fetch('/api/content',{cache:'no-store'})).json();applyTheme(c.theme||{});setText('businessName',c.businessName);setText('footerName',c.businessName);setText('qualification',c.qualification);setText('tagline',c.tagline);setText('intro',c.intro);setText('location',c.location);setText('bookingNote',c.bookingNote);setText('contactLocation',c.location);setText('openingHours',c.openingHours);document.querySelectorAll('.book-link').forEach(a=>a.href=c.bookingUrl);setText('offerTitle',c.offer?.title);setText('offerText',c.offer?.text);setText('offerButton',c.offer?.buttonText||'Book now');setText('offerDates',[c.offer?.startDate&&`From ${c.offer.startDate}`,c.offer?.endDate&&`until ${c.offer.endDate}`].filter(Boolean).join(' '));setText('aboutHeading',c.about?.heading);setText('aboutText',c.about?.text);$('qualificationList').innerHTML=(c.about?.qualifications||[]).map(x=>`<li>${x}</li>`).join('');setText('disclaimer',c.policies?.disclaimer);setText('cancellation',c.policies?.cancellation);setText('privacy',c.policies?.privacy);$('serviceGrid').innerHTML=(c.services||[]).filter(x=>x.enabled).sort((a,b)=>(a.order||0)-(b.order||0)).map(x=>`<article class="card ${x.featured?'featured':''}"><h3>${x.name}</h3><p>${x.description}</p><div class="meta"><span>${x.duration}</span><span>${x.salePrice?`<s>${x.price}</s> <span class="sale">${x.salePrice}</span>`:x.price}</span></div>${x.bookingUrl?`<p><a class="text-link" href="${x.bookingUrl}" target="_blank" rel="noopener">Book this service →</a></p>`:''}</article>`).join('');const testimonials=(c.testimonials||[]).filter(x=>x.enabled);$('testimonialGrid').innerHTML=testimonials.map(x=>`<article class="testimonial"><p>“${x.text}”</p><strong>${x.name}</strong></article>`).join('');$('faqList').innerHTML=(c.faqs||[]).filter(x=>x.enabled).sort((a,b)=>(a.order||0)-(b.order||0)).map(x=>`<div class="faq"><button><span>${x.question}</span><span>+</span></button><div class="answer">${x.answer}</div></div>`).join('');document.querySelectorAll('.faq button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));Object.entries(c.sections||{}).forEach(([k,v])=>vis(k,v));$('posterWrap')?.classList.toggle('hidden',!c.sections?.poster);$('offerCard')?.classList.toggle('hidden',!c.offer?.enabled);reorder(c.sectionOrder||[]);const links=[];if(c.instagramUrl)links.push(`<a href="${c.instagramUrl}" target="_blank" rel="noopener">Instagram</a>`);if(c.facebookUrl)links.push(`<a href="${c.facebookUrl}" target="_blank" rel="noopener">Facebook</a>`);if(c.whatsappUrl)links.push(`<a href="${c.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a>`);if(c.email)links.push(`<a href="mailto:${c.email}">Email</a>`);$('socialLinks').innerHTML=links.join('');document.title=c.seo?.title||c.businessName;$('metaDescription').content=c.seo?.description||'';$('canonicalLink').href=c.seo?.canonicalUrl||location.origin}
-$('year').textContent=new Date().getFullYear();$('menuButton').onclick=()=>$('mainNav').classList.toggle('open');start().catch(console.error);
+const text=(id,value)=>{const e=$(id);if(e)e.textContent=value??""};
+const visible=(id,on)=>{const e=$(id);if(e)e.classList.toggle("hidden",!on)};
+const safeArray=value=>Array.isArray(value)?value:[];
+
+function applyTheme(t={}){
+  const root=document.documentElement.style;
+  const vars={
+    "--primary":t.primary,"--primary-dark":t.primaryDark,"--accent":t.accent,
+    "--background":t.background,"--surface":t.surface,"--text":t.text,
+    "--muted":t.muted,"--border":t.border,
+    "--content-width":t.contentWidth?`${Number(t.contentWidth)||1120}px`:null,
+    "--section-spacing":t.sectionSpacing?`${Number(t.sectionSpacing)||76}px`:null,
+    "--card-radius":t.cardRadius!==undefined?`${Number(t.cardRadius)}px`:null,
+    "--button-radius":t.buttonRadius!==undefined?`${Number(t.buttonRadius)}px`:null,
+    "--logo-size":t.logoSize?`${Number(t.logoSize)}px`:null,
+    "--banner-height":t.bannerHeight?`${Number(t.bannerHeight)}px`:null,
+    "--heading-font":t.headingFont?`${t.headingFont},serif`:null,
+    "--body-font":t.bodyFont?`${t.bodyFont},sans-serif`:null
+  };
+  Object.entries(vars).forEach(([k,v])=>{if(v)root.setProperty(k,v)});
+  const shadows={none:"none",soft:"0 18px 46px rgba(52,65,38,.11)",strong:"0 25px 65px rgba(52,65,38,.22)"};
+  root.setProperty("--shadow",shadows[t.shadow]||shadows.soft);
+  $("siteHeader").className=`site-header ${t.headerStyle==="dark"?"dark":"light"}`;
+  $("heroGrid").className=`container hero-grid ${t.heroLayout==="center"?"center":""}`;
+}
+
+function isOfferActive(offer={}){
+  if(offer.enabled===false)return false;
+  const today=new Date();today.setHours(0,0,0,0);
+  if(offer.startDate){const start=new Date(`${offer.startDate}T00:00:00`);if(today<start)return false}
+  if(offer.endDate){const end=new Date(`${offer.endDate}T23:59:59`);if(today>end)return false}
+  return true;
+}
+
+async function start(){
+  const response=await fetch("/api/content",{cache:"no-store"});
+  if(!response.ok)throw new Error(`Content request failed: ${response.status}`);
+  const c=await response.json();
+
+  applyTheme(c.theme||{});
+  text("businessName",c.businessName);text("footerName",c.businessName);
+  text("qualification",c.qualification);text("tagline",c.tagline);text("intro",c.intro);
+  text("location",c.location);text("bookingNote",c.bookingNote);
+  text("contactLocation",c.location);text("openingHours",c.openingHours);
+  document.querySelectorAll(".booking-link").forEach(a=>a.href=c.bookingUrl||"https://balancerestorecppm.setmore.com");
+
+  const offer=c.offer||{};
+  text("offerTitle",offer.title);text("offerText",offer.text);text("offerButton",offer.buttonText||"Book now");
+  text("offerDates",[offer.startDate&&`From ${offer.startDate}`,offer.endDate&&`until ${offer.endDate}`].filter(Boolean).join(" "));
+  visible("offerCard",isOfferActive(offer));
+
+  const about=c.about||{};
+  text("aboutHeading",about.heading);text("aboutText",about.text);
+  $("qualificationList").innerHTML=safeArray(about.qualifications).map(x=>`<li>${x}</li>`).join("");
+  const policies=c.policies||{};
+  text("disclaimer",policies.disclaimer);text("cancellation",policies.cancellation);text("privacy",policies.privacy);
+
+  const services=safeArray(c.services).filter(x=>x&&x.enabled!==false).sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));
+  $("serviceGrid").innerHTML=services.map(x=>`<article class="service-card ${x.featured?"featured":""}">
+    <h3>${x.name||""}</h3><p>${x.description||""}</p>
+    <div class="service-meta"><span>${x.duration||""}</span><span>${x.salePrice?`<s>${x.price||""}</s> <span class="sale">${x.salePrice}</span>`:(x.price||"")}</span></div>
+    ${x.bookingUrl?`<p><a class="text-link" href="${x.bookingUrl}" target="_blank" rel="noopener">Book this service →</a></p>`:""}
+  </article>`).join("");
+
+  const testimonials=safeArray(c.testimonials).filter(x=>x&&x.enabled!==false);
+  $("testimonialGrid").innerHTML=testimonials.map(x=>`<article class="testimonial"><p>“${x.text||""}”</p><strong>${x.name||"Client"}</strong></article>`).join("");
+
+  const faqs=safeArray(c.faqs).filter(x=>x&&x.enabled!==false).sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));
+  $("faqList").innerHTML=faqs.map(x=>`<div class="faq-item"><button class="faq-question"><span>${x.question||""}</span><span>+</span></button><div class="faq-answer">${x.answer||""}</div></div>`).join("");
+  document.querySelectorAll(".faq-question").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"));
+
+  const sections=c.sections||{};
+  visible("bannerSection",sections.banner!==false);visible("heroSection",sections.hero!==false);
+  visible("servicesSection",sections.services!==false);visible("aboutSection",sections.about!==false);
+  visible("posterWrap",sections.poster!==false);visible("testimonialsSection",sections.testimonials===true&&testimonials.length>0);
+  visible("faqSection",sections.faq!==false&&faqs.length>0);visible("policiesSection",sections.policies!==false);
+  visible("contactSection",sections.contact!==false);
+
+  const links=[];
+  if(c.instagramUrl)links.push(`<a href="${c.instagramUrl}" target="_blank" rel="noopener">Instagram</a>`);
+  if(c.facebookUrl)links.push(`<a href="${c.facebookUrl}" target="_blank" rel="noopener">Facebook</a>`);
+  if(c.whatsappUrl)links.push(`<a href="${c.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a>`);
+  if(c.email)links.push(`<a href="mailto:${c.email}">Email</a>`);
+  $("socialLinks").innerHTML=links.join("");
+
+  const seo=c.seo||{};
+  document.title=seo.title||`${c.businessName||"Balance & Restore"} | Hijama & Cupping Therapy`;
+  $("metaDescription").content=seo.description||"";
+  $("canonicalLink").href=seo.canonicalUrl||location.origin;
+}
+$("year").textContent=new Date().getFullYear();
+$("menuButton").onclick=()=>$("mainNav").classList.toggle("open");
+start().catch(error=>{console.error(error);document.body.insertAdjacentHTML("afterbegin",'<div style="padding:12px;background:#ffe8e8;text-align:center">The website content could not load. Please refresh or contact the site administrator.</div>')});

@@ -1,14 +1,49 @@
-# Balance & Restore custom admin v1
+# Balance & Restore Complete v3
 
-Includes a public website, `/admin/` dashboard, Cloudflare D1 storage and Cloudflare Access-compatible protection.
+This is a complete replacement project, not a patch.
 
-## Setup
+## Important
+
+Keep your existing production `wrangler.jsonc`, because it already contains your correct D1 database ID and admin email.
+
+Copy these new folders/files over the existing project:
+
+- `public/`
+- `src/`
+- `migrations/`
+- `package.json`
+- `.gitignore`
+
+Use `wrangler.example.jsonc` only as a reference. Do not overwrite your working `wrangler.jsonc` unless you copy your real values into it.
+
+## Why this version is safer
+
+- Old D1 content is deeply merged with current defaults.
+- Missing settings no longer remove website sections.
+- Invalid or incomplete old JSON falls back safely.
+- Promotions support enabled/disabled, start date and end date.
+- Blank promotion dates mean always active.
+- The admin save API returns normalized complete content.
+- A reset-to-recommended-defaults button is included.
+- Public JavaScript tolerates missing optional arrays and fields.
+
+## Test
+
 1. `npm install`
-2. `npx wrangler login`
-3. `npm run db:create`
-4. Copy the D1 database ID into `wrangler.jsonc`.
-5. Replace `REPLACE_WITH_YOUR_EMAIL` with your login email.
-6. `npm run db:migrate:remote`
-7. Push to GitHub and set Cloudflare deploy command to `npm run deploy`.
-8. Protect `/admin/*` and `/api/admin/*` with Cloudflare Access, allowing only your email.
-9. Open `https://restore-cupping.com/admin/`.
+2. `npm run dev`
+3. Test the public website.
+4. Test `/admin/`.
+5. Change one item and save.
+6. Refresh the public site.
+7. Test promotion with blank dates.
+8. Test promotion with future/expired dates.
+
+## Deploy
+
+```powershell
+git add .
+git commit -m "Replace website with complete admin v3"
+git push
+```
+
+Cloudflare will deploy automatically.

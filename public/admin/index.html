@@ -1,94 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Balance & Restore Admin</title>
-  <link rel="stylesheet" href="/admin/admin.css">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Balance & Restore Admin</title><link rel="stylesheet" href="/admin/admin.css"></head>
 <body>
-<header class="admin-header">
-  <div><strong>Balance & Restore</strong><span>Website Manager</span></div>
-  <div><span id="saveState">Saved</span><a href="/" target="_blank">View website ↗</a></div>
-</header>
-<div class="admin-shell">
-  <aside class="sidebar">
-    <button class="tab active" data-tab="dashboard">Dashboard</button>
-    <button class="tab" data-tab="general">General</button>
-    <button class="tab" data-tab="theme">Theme</button>
-    <button class="tab" data-tab="sections">Sections</button>
-    <button class="tab" data-tab="services">Services</button>
-    <button class="tab" data-tab="offer">Promotion</button>
-    <button class="tab" data-tab="about">About</button>
-    <button class="tab" data-tab="faqs">FAQs</button>
-    <button class="tab" data-tab="testimonials">Testimonials</button>
-    <button class="tab" data-tab="contact">Contact</button>
-    <button class="tab" data-tab="policies">Policies</button>
-    <button class="tab" data-tab="seo">SEO</button>
+<header class="admin-header"><div><strong>Balance & Restore</strong><span>Website Manager</span></div><div><span id="saveState">Saved</span><a href="/" target="_blank">View website ↗</a></div></header>
+<div class="shell">
+  <aside id="sidebar">
+    <button class="tab active" data-tab="dashboard">Dashboard</button><button class="tab" data-tab="general">General</button><button class="tab" data-tab="theme">Theme</button><button class="tab" data-tab="sections">Sections</button><button class="tab" data-tab="services">Services</button><button class="tab" data-tab="offer">Promotion</button><button class="tab" data-tab="about">About</button><button class="tab" data-tab="faq">FAQs</button><button class="tab" data-tab="testimonials">Testimonials</button><button class="tab" data-tab="contact">Contact</button><button class="tab" data-tab="policies">Policies</button><button class="tab" data-tab="seo">SEO</button>
   </aside>
   <main>
-    <div id="status" class="status">Loading content…</div>
+    <div id="status" class="status">Loading…</div>
     <form id="editor">
-      <section class="panel active" data-panel="dashboard">
-        <h1>Website dashboard</h1>
-        <div id="dashboardCards" class="summary-grid"></div>
-        <div class="help-box"><strong>How it works</strong><p>Edit a section, then click <b>Save and publish</b>. Changes appear on the live website immediately.</p></div>
-      </section>
-
-      <section class="panel" data-panel="general">
-        <h1>General website details</h1>
-        <div class="field-grid">
-          <label>Business name<input name="businessName"></label>
-          <label>Qualifications<input name="qualification"></label>
-          <label class="full">Main tagline<textarea name="tagline"></textarea></label>
-          <label class="full">Introduction<textarea name="intro"></textarea></label>
-          <label>Location<input name="location"></label>
-          <label>Booking note<input name="bookingNote"></label>
-          <label class="full">Setmore booking URL<input name="bookingUrl" type="url"></label>
-          <label>Opening hours<input name="openingHours"></label>
-        </div>
-      </section>
-
-      <section class="panel" data-panel="theme">
-        <h1>Theme and appearance</h1>
-        <div class="preset-row">
-          <button type="button" class="preset" data-preset="olive-gold">Olive & Gold</button>
-          <button type="button" class="preset" data-preset="soft-sage">Soft Sage</button>
-          <button type="button" class="preset" data-preset="warm-cream">Warm Cream</button>
-          <button type="button" class="preset" data-preset="modern-minimal">Modern Minimal</button>
-        </div>
-        <div class="theme-grid">
-          <label>Primary colour<input type="color" name="theme.primary"></label>
-          <label>Dark colour<input type="color" name="theme.primaryDark"></label>
-          <label>Accent colour<input type="color" name="theme.accent"></label>
-          <label>Page background<input type="color" name="theme.background"></label>
-          <label>Section background<input type="color" name="theme.surface"></label>
-          <label>Text colour<input type="color" name="theme.text"></label>
-          <label>Heading font<select name="theme.headingFont"><option>Georgia</option><option>Arial</option><option>Verdana</option><option>Trebuchet MS</option></select></label>
-          <label>Body font<select name="theme.bodyFont"><option>Arial</option><option>Verdana</option><option>Trebuchet MS</option><option>Georgia</option></select></label>
-          <label>Header style<select name="theme.headerStyle"><option value="light">Light</option><option value="dark">Dark</option></select></label>
-          <label>Hero layout<select name="theme.heroLayout"><option value="split">Split</option><option value="center">Centred</option></select></label>
-          <label>Card shadow<select name="theme.shadow"><option value="none">None</option><option value="soft">Soft</option><option value="strong">Strong</option></select></label>
-          <label>Content width<input type="range" min="900" max="1300" step="20" name="theme.contentWidthNumber"><span class="range-value"></span></label>
-          <label>Section spacing<input type="range" min="40" max="120" name="theme.sectionSpacing"><span class="range-value"></span></label>
-          <label>Card roundness<input type="range" min="0" max="32" name="theme.cardRadius"><span class="range-value"></span></label>
-          <label>Button roundness<input type="range" min="0" max="999" step="10" name="theme.buttonRadius"><span class="range-value"></span></label>
-          <label>Logo size<input type="range" min="36" max="100" name="theme.logoSize"><span class="range-value"></span></label>
-          <label>Banner height<input type="range" min="180" max="600" step="10" name="theme.bannerHeight"><span class="range-value"></span></label>
-        </div>
-      </section>
-
-      <section class="panel" data-panel="sections"><h1>Sections and visibility</h1><div id="sectionControls"></div></section>
-      <section class="panel" data-panel="services"><div class="panel-title"><h1>Services</h1><button type="button" id="addService" class="secondary">+ Add service</button></div><div id="services"></div></section>
-      <section class="panel" data-panel="offer"><h1>Promotion</h1><label class="switch"><input name="offer.enabled" type="checkbox"> Show promotion</label><label>Promotion title<input name="offer.title"></label><label>Promotion details<textarea name="offer.text"></textarea></label><label>Button text<input name="offer.buttonText"></label><div class="two"><label>Start date<input name="offer.startDate" type="date"></label><label>End date<input name="offer.endDate" type="date"></label></div></section>
-      <section class="panel" data-panel="about"><h1>About section</h1><label>Heading<input name="about.heading"></label><label>About text<textarea name="about.text"></textarea></label><div id="qualifications"></div><button type="button" id="addQualification" class="secondary">+ Add qualification</button></section>
-      <section class="panel" data-panel="faqs"><div class="panel-title"><h1>FAQs</h1><button type="button" id="addFaq" class="secondary">+ Add FAQ</button></div><div id="faqs"></div></section>
-      <section class="panel" data-panel="testimonials"><div class="panel-title"><h1>Testimonials</h1><button type="button" id="addTestimonial" class="secondary">+ Add testimonial</button></div><div id="testimonials"></div></section>
-      <section class="panel" data-panel="contact"><h1>Contact and social links</h1><div class="field-grid"><label>Email<input name="email" type="email"></label><label>WhatsApp URL<input name="whatsappUrl" type="url"></label><label>Instagram URL<input name="instagramUrl" type="url"></label><label>Facebook URL<input name="facebookUrl" type="url"></label></div></section>
-      <section class="panel" data-panel="policies"><h1>Policies and disclaimer</h1><label>Cancellation policy<textarea name="policies.cancellation"></textarea></label><label>Privacy wording<textarea name="policies.privacy"></textarea></label><label>Health disclaimer<textarea name="policies.disclaimer"></textarea></label></section>
-      <section class="panel" data-panel="seo"><h1>Search engine settings</h1><label>Page title<input name="seo.title"></label><label>Meta description<textarea name="seo.description"></textarea></label><label>Social sharing title<input name="seo.socialTitle"></label><label>Canonical URL<input name="seo.canonicalUrl" type="url"></label></section>
-
-      <div class="savebar"><button type="button" id="discardButton" class="ghost">Discard changes</button><button type="submit">Save and publish</button></div>
+      <section class="panel active" data-panel="dashboard"><h1>Dashboard</h1><div id="summary" class="summary-grid"></div><div class="tip"><b>Safe editing:</b> blank optional fields are allowed. Required website defaults are automatically preserved.</div></section>
+      <section class="panel" data-panel="general"><h1>General details</h1><div class="grid"><label>Business name<input name="businessName"></label><label>Qualifications<input name="qualification"></label><label class="full">Main tagline<textarea name="tagline"></textarea></label><label class="full">Introduction<textarea name="intro"></textarea></label><label>Location<input name="location"></label><label>Booking note<input name="bookingNote"></label><label class="full">Setmore URL<input name="bookingUrl" type="url"></label><label>Opening hours<input name="openingHours"></label></div></section>
+      <section class="panel" data-panel="theme"><h1>Theme</h1><div class="presets"><button type="button" data-preset="oliveGold">Olive & Gold</button><button type="button" data-preset="softSage">Soft Sage</button><button type="button" data-preset="warmCream">Warm Cream</button><button type="button" data-preset="modern">Modern Minimal</button></div><div class="grid"><label>Primary<input type="color" name="theme.primary"></label><label>Dark<input type="color" name="theme.primaryDark"></label><label>Accent<input type="color" name="theme.accent"></label><label>Background<input type="color" name="theme.background"></label><label>Section background<input type="color" name="theme.surface"></label><label>Text<input type="color" name="theme.text"></label><label>Header<select name="theme.headerStyle"><option value="light">Light</option><option value="dark">Dark</option></select></label><label>Hero layout<select name="theme.heroLayout"><option value="split">Split</option><option value="center">Centred</option></select></label><label>Shadow<select name="theme.shadow"><option value="none">None</option><option value="soft">Soft</option><option value="strong">Strong</option></select></label><label>Section spacing<input type="number" min="40" max="120" name="theme.sectionSpacing"></label><label>Card roundness<input type="number" min="0" max="40" name="theme.cardRadius"></label><label>Button roundness<input type="number" min="0" max="999" name="theme.buttonRadius"></label><label>Logo size<input type="number" min="36" max="120" name="theme.logoSize"></label><label>Banner height<input type="number" min="160" max="700" name="theme.bannerHeight"></label></div></section>
+      <section class="panel" data-panel="sections"><h1>Section visibility</h1><div id="sectionControls"></div></section>
+      <section class="panel" data-panel="services"><div class="panel-heading"><h1>Services</h1><button type="button" id="addService">+ Add service</button></div><div id="services"></div></section>
+      <section class="panel" data-panel="offer"><h1>Promotion</h1><label class="switch"><input type="checkbox" name="offer.enabled"> Promotion enabled</label><label>Title<input name="offer.title"></label><label>Details<textarea name="offer.text"></textarea></label><div class="grid"><label>Button text<input name="offer.buttonText"></label><label>Start date<input type="date" name="offer.startDate"></label><label>End date<input type="date" name="offer.endDate"></label></div><p class="hint">Leave both dates blank to keep the promotion active until you switch it off.</p></section>
+      <section class="panel" data-panel="about"><h1>About</h1><label>Heading<input name="about.heading"></label><label>Text<textarea name="about.text"></textarea></label><div id="qualifications"></div><button type="button" id="addQualification">+ Add qualification</button></section>
+      <section class="panel" data-panel="faq"><div class="panel-heading"><h1>FAQs</h1><button type="button" id="addFaq">+ Add FAQ</button></div><div id="faqs"></div></section>
+      <section class="panel" data-panel="testimonials"><div class="panel-heading"><h1>Testimonials</h1><button type="button" id="addTestimonial">+ Add testimonial</button></div><div id="testimonials"></div></section>
+      <section class="panel" data-panel="contact"><h1>Contact</h1><div class="grid"><label>Email<input type="email" name="email"></label><label>WhatsApp URL<input type="url" name="whatsappUrl"></label><label>Instagram URL<input type="url" name="instagramUrl"></label><label>Facebook URL<input type="url" name="facebookUrl"></label></div></section>
+      <section class="panel" data-panel="policies"><h1>Policies</h1><label>Cancellation<textarea name="policies.cancellation"></textarea></label><label>Privacy<textarea name="policies.privacy"></textarea></label><label>Health disclaimer<textarea name="policies.disclaimer"></textarea></label></section>
+      <section class="panel" data-panel="seo"><h1>SEO</h1><label>Page title<input name="seo.title"></label><label>Description<textarea name="seo.description"></textarea></label><label>Canonical URL<input type="url" name="seo.canonicalUrl"></label></section>
+      <div class="savebar"><button type="button" id="resetButton" class="secondary">Reset to recommended defaults</button><button type="button" id="discardButton" class="secondary">Discard unsaved changes</button><button type="submit">Save and publish</button></div>
     </form>
   </main>
 </div>
