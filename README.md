@@ -65,3 +65,16 @@ After Cloudflare finishes:
 - **Upload photos** uploads gallery files immediately.
 - Each gallery card's **Save changes** updates that photo.
 - The bottom **Save and publish** button is for normal website content, not gallery uploads.
+
+
+## Version 7.1 — Uniform Gallery
+
+Gallery thumbnails now:
+
+- use the same 4:3 dimensions
+- show three columns on desktop
+- show two columns on tablets
+- show one column on phones
+- crop thumbnails neatly with `object-fit: cover`
+- never stretch images
+- open the full uncropped image when clicked
