@@ -1,60 +1,35 @@
-# Balance & Restore Fresh Version 5
+# Balance & Restore Clean Version 6
 
-Complete fresh replacement with working navigation, a softer feminine design, social icons, and local D1 users.
+This is a complete replacement project built from the uploaded live project.
 
-## Security
+## Fixes
+- one D1 binding only
+- minimal reliable local-user insert
+- complete user management page
+- detailed backend errors
+- R2 gallery upload, editing, ordering, visibility and deletion
+- responsive mixed-size public gallery and full-image viewer
+- no duplicate root website files or node_modules
 
-Passwords use PBKDF2-SHA256 with random salts and 210,000 iterations. Sessions use random tokens, store only token hashes in D1, and use Secure + HttpOnly + SameSite=Strict cookies. Write requests use CSRF tokens. Five failed logins in 15 minutes temporarily block further attempts.
-
-Only these emails can create users, disable users and reset passwords:
-
-- haneen.jalal@gmail.com
-- omar.manaa@gmail.com
-
-## Preserve your real D1 binding
-
-Use `wrangler.example.jsonc` only as a reference. Keep your existing `wrangler.jsonc`, but make sure `run_worker_first` contains `/api/*` and `/admin/*`.
-
-Create the setup token as a secret:
-
+## Before deployment
+Create the R2 bucket once:
 ```powershell
-npx wrangler secret put ADMIN_SETUP_TOKEN
+npx wrangler r2 bucket create balance-restore-gallery
 ```
 
-Use a long random value. Do not commit it to GitHub.
-
-## Fresh reset
-
-Back up D1 first. This removes old content and local users:
-
-```powershell
-npm run db:fresh:remote
-npm run db:migrate:remote
-```
-
-## First administrator
-
-After deployment open:
-
-`https://restore-cupping.com/admin/setup/`
-
-Use the setup token and either approved administrator email. Passwords require at least 12 characters with upper-case, lower-case and a number.
-
-## Login and users
-
-- Login: `https://restore-cupping.com/admin/login/`
-- Users: `https://restore-cupping.com/admin/users/`
-
-## Contact icons
-
-Email is included by default. Add the correct WhatsApp and Instagram URLs in Admin → Contact. Their icon buttons will then appear and work.
-
-## Deploy
-
+Apply migrations:
 ```powershell
 npm install
 npm run db:migrate:remote
+```
+
+The migrations do not delete the existing administrator or website content.
+
+Deploy:
+```powershell
 git add .
-git commit -m "Deploy fresh Balance Restore v5"
+git commit -m "Replace site with clean Version 6"
 git push
 ```
+
+The existing `ADMIN_SETUP_TOKEN` Worker secret can remain. It is not included in this ZIP.

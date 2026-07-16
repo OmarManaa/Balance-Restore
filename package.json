@@ -1,13 +1,13 @@
 {
-  "name": "balance-restore-fresh-v5",
+  "name": "balance-restore-clean-v6",
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "db:migrate:remote": "wrangler d1 migrations apply balance-restore-db --remote",
-    "db:fresh:remote": "wrangler d1 execute balance-restore-db --remote --file=./migrations/fresh-reset.sql"
+    "db:migrate:local": "wrangler d1 migrations apply balance-restore-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply balance-restore-db --remote"
   },
   "devDependencies": {
-    "wrangler": "^4.0.0"
+    "wrangler": "^4.110.0"
   }
 }
