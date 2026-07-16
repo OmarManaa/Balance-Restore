@@ -96,10 +96,93 @@ async function usersRoute(req,env,url,s){
     const r=await env.DB.prepare('SELECT id,email,name,role,active,created_at,updated_at FROM users ORDER BY created_at').all();return json({users:r.results||[]});
   }
   if(url.pathname==='/api/users'&&req.method==='POST'){
-    const b=await req.json(),e=email(b.email);if(!validPassword(b.password))return json({error:'Password does not meet requirements.'},400);
-    const h=await hashPassword(b.password);
-    try{await env.DB.prepare('INSERT INTO users(id,email,name,role,password_hash,password_salt,password_iterations,active) VALUES(?,?,?,?,?,?,?,1)').bind(crypto.randomUUID(),e,String(b.name||'').trim(),b.role==='admin'?'admin':'editor',h.hash,h.salt,h.iterations).run()}catch{return json({error:'That email already exists.'},409)}
-    return json({ok:true});
+    let b;
+    try{
+      b=await req.json();
+    }catch{
+      return json({error:'The user request did not contain valid JSON.'},400);
+    }
+
+    const e=email(b.email);
+    const name=String(b.name||'').trim();
+    const role=b.role==='admin'?'admin':'editor';
+    const password=String(b.password||'');
+
+    if(!e||!/^\\S+@\\S+\\.\\S+$/.test(e)){
+      return json({error:'Enter a valid email address.'},400);
+    }
+    if(!name){
+      return json({error:'Enter the user name.'},400);
+    }
+    if(!validPassword(password)){
+      return json({
+        error:'Password must be at least 12 characters and include uppercase, lowercase and a number.'
+      },400);
+    }
+
+    try{
+      const existing=await env.DB.prepare(
+        'SELECT id FROM users WHERE lower(email)=lower(?) LIMIT 1'
+      ).bind(e).first();
+
+      if(existing){
+        return json({error:'A user with this email address already exists.'},409);
+      }
+
+      const h=await hashPassword(password);
+      const id=crypto.randomUUID();
+
+      const result=await env.DB.prepare(`
+        INSERT INTO users (
+          id,
+          email,
+          name,
+          role,
+          password_hash,
+          password_salt,
+          password_iterations,
+          active,
+          created_at,
+          updated_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, 1, datetime('now'), datetime('now'))
+      `).bind(
+        id,
+        e,
+        name,
+        role,
+        h.hash,
+        h.salt,
+        h.iterations
+      ).run();
+
+      if(!result.success){
+        console.error('D1 create-user result:',JSON.stringify(result));
+        return json({
+          error:'The database did not confirm that the user was created.',
+          details:result.error||'Unknown D1 result'
+        },500);
+      }
+
+      const created=await env.DB.prepare(
+        'SELECT id,email,name,role,active,created_at,updated_at FROM users WHERE id=?'
+      ).bind(id).first();
+
+      return json({ok:true,user:created},201);
+    }catch(error){
+      console.error('Create user failed:',error?.stack||error);
+
+      const message=String(error?.message||error||'Unknown database error');
+
+      if(message.toLowerCase().includes('unique')){
+        return json({error:'A user with this email address already exists.'},409);
+      }
+
+      return json({
+        error:'Could not create user.',
+        details:message
+      },500);
+    }
   }
   let m=url.pathname.match(/^\/api\/users\/([^/]+)\/password$/);
   if(m&&req.method==='PUT'){
