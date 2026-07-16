@@ -1,52 +1,67 @@
-# Balance & Restore Clean Version 6
+# Balance & Restore — Production Version 7
 
-This is a complete replacement project built from the uploaded live project.
+This is the consolidated production project based on Version 6.1.
 
-## Fixes
-- one D1 binding only
-- minimal reliable local-user insert
-- complete user management page
-- detailed backend errors
-- R2 gallery upload, editing, ordering, visibility and deletion
-- responsive mixed-size public gallery and full-image viewer
-- no duplicate root website files or node_modules
+## Critical gallery fix
 
-## Before deployment
-Create the R2 bucket once:
-```powershell
-npx wrangler r2 bucket create balance-restore-gallery
-```
+The previous public `site.js` used undefined functions:
 
-Apply migrations:
-```powershell
-npm install
-npm run db:migrate:remote
-```
+- `setText()`
+- `setVisible()`
 
-The migrations do not delete the existing administrator or website content.
+This stopped JavaScript before `loadGallery()` ran.
+
+Version 7 uses one consistent implementation and loads:
+
+- `/api/content`
+- `/api/gallery`
+- R2 image URLs
+
+The three already-uploaded photos remain in D1/R2 and will display automatically.
+
+## Included
+
+- Public responsive website
+- Working Services, About, Gallery and FAQ navigation
+- Setmore links
+- SVG social/contact buttons
+- D1 content management
+- Local login and user management
+- R2 gallery upload
+- Existing gallery management
+- Move earlier/later
+- Hide/show
+- Edit title and alternative text
+- Delete photo
+- Full-size lightbox
+- Browser cache-busting for CSS and JavaScript
+
+## Upgrade from Version 6.1
+
+Replace the current project files with this folder.
+
+Do not reset D1 and do not recreate the R2 bucket.
+
+No new migration is required.
 
 Deploy:
+
 ```powershell
+npm install
 git add .
-git commit -m "Replace site with clean Version 6"
+git commit -m "Deploy production Version 7"
 git push
 ```
 
-The existing `ADMIN_SETUP_TOKEN` Worker secret can remain. It is not included in this ZIP.
+After Cloudflare finishes:
 
+1. Open the main site.
+2. Press Ctrl+F5 once.
+3. Open `https://restore-cupping.com/#gallery`.
+4. The existing gallery photos should appear.
 
-## Version 6.1 Gallery Manager Fix
+## Important Admin behaviour
 
-The Gallery now:
-
-- loads existing R2/D1 photos automatically when Admin opens
-- has a clearly visible green Upload photos button
-- does not use the website Save and publish button for uploads
-- shows uploaded photos immediately
-- supports Move earlier and Move later
-- supports title/alt-text editing
-- supports hide/show
-- supports permanent deletion
-- displays upload and backend errors clearly
-
-No migration or database reset is required when upgrading from Version 6.
+- **Upload photos** uploads gallery files immediately.
+- Each gallery card's **Save changes** updates that photo.
+- The bottom **Save and publish** button is for normal website content, not gallery uploads.
