@@ -1,12 +1,1 @@
-{
-  "name": "balance-restore-complete-v3",
-  "private": true,
-  "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "db:migrate:remote": "wrangler d1 migrations apply balance-restore-db --remote"
-  },
-  "devDependencies": {
-    "wrangler": "^4.0.0"
-  }
-}
+{"name":"balance-restore-v4","private":true,"scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","db:migrate:remote":"wrangler d1 migrations apply balance-restore-db --remote"},"devDependencies":{"wrangler":"^4.0.0"}}
