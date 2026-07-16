@@ -2,3 +2,74 @@
 header button{border:0;background:#dcaeb2;color:#35443a;padding:8px 13px;border-radius:999px;font-weight:700}.users-link{display:block;margin-top:14px;padding:14px 12px;border-top:1px solid var(--line);color:var(--olive);text-decoration:none;font-weight:700}
 
 .gallery-upload-box{display:grid;grid-template-columns:1.4fr 1fr auto;gap:14px;align-items:end;padding:18px;margin-bottom:18px;border:1px dashed var(--rose);border-radius:15px;background:#fffafa}.gallery-upload-box label{margin:0}.gallery-upload-box button{min-height:45px;padding:10px 16px;border:0;border-radius:999px;background:var(--primary);color:#fff;font-weight:700}.gallery-upload-box #galleryUploadProgress{grid-column:1/-1}.gallery-admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.gallery-admin-card{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--cream)}.gallery-admin-preview{width:100%;aspect-ratio:4/3;object-fit:cover}.gallery-admin-fields{padding:13px}.gallery-admin-actions{display:flex;gap:8px;flex-wrap:wrap}.gallery-admin-actions button{padding:8px 10px;border:1px solid var(--primary);border-radius:8px;background:#fff;color:var(--primary)}.gallery-admin-actions .delete-gallery{border-color:var(--danger);color:var(--danger)}@media(max-width:850px){.gallery-upload-box{grid-template-columns:1fr 1fr}.gallery-admin-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.gallery-upload-box,.gallery-admin-grid{grid-template-columns:1fr}}
+
+
+/* Gallery manager v6.1 */
+.gallery-upload-box{
+  grid-template-columns:minmax(260px,1.3fr) minmax(220px,1fr) auto!important;
+}
+#uploadGallery{
+  min-width:170px;
+  min-height:48px;
+  border:0!important;
+  border-radius:999px!important;
+  background:var(--olive)!important;
+  color:#fff!important;
+  font-weight:800!important;
+  opacity:1!important;
+  box-shadow:0 10px 24px rgba(89,103,70,.2);
+}
+#uploadGallery:hover{filter:brightness(.94)}
+#uploadGallery:disabled{opacity:.62!important}
+.gallery-message{grid-column:1/-1;min-height:24px;margin-top:4px;font-weight:700}
+.gallery-message.success{color:#4d6c46}
+.gallery-message.error{color:var(--danger)}
+.gallery-message.working{color:#7a674a}
+.gallery-loading,.gallery-empty-admin{
+  grid-column:1/-1;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  padding:28px;
+  border:1px dashed var(--line);
+  border-radius:14px;
+  color:#6f746d;
+  text-align:center;
+}
+.gallery-admin-image-wrap{position:relative}
+.gallery-position,.gallery-hidden-badge{
+  position:absolute;
+  top:10px;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:.76rem;
+  font-weight:800;
+}
+.gallery-position{left:10px;background:#fff;color:var(--dark)}
+.gallery-hidden-badge{right:10px;background:#8e4d57;color:#fff}
+.gallery-order-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:12px;
+}
+.gallery-order-actions button{
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
+  color:var(--dark);
+  font-weight:700;
+  cursor:pointer;
+}
+.gallery-order-actions button:disabled{opacity:.35;cursor:not-allowed}
+.gallery-admin-actions .save-gallery{
+  background:var(--olive);
+  color:#fff;
+  border-color:var(--olive);
+  font-weight:800;
+}
+@media(max-width:700px){
+  .gallery-upload-box{grid-template-columns:1fr!important}
+  #uploadGallery{width:100%}
+}

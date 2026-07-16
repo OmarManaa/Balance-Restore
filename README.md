@@ -33,3 +33,20 @@ git push
 ```
 
 The existing `ADMIN_SETUP_TOKEN` Worker secret can remain. It is not included in this ZIP.
+
+
+## Version 6.1 Gallery Manager Fix
+
+The Gallery now:
+
+- loads existing R2/D1 photos automatically when Admin opens
+- has a clearly visible green Upload photos button
+- does not use the website Save and publish button for uploads
+- shows uploaded photos immediately
+- supports Move earlier and Move later
+- supports title/alt-text editing
+- supports hide/show
+- supports permanent deletion
+- displays upload and backend errors clearly
+
+No migration or database reset is required when upgrading from Version 6.

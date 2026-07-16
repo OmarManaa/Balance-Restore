@@ -1,33 +1,28 @@
 {
-	"name": "balance-restore",
-	"main": "src/worker.js",
-	"compatibility_date": "2026-07-16",
-	"assets": {
-		"directory": "./public",
-		"binding": "ASSETS",
-		"run_worker_first": [
-			"/api/*",
-			"/admin",
-			"/admin/*",
-			"/media/*"
-		]
-	},
-	"r2_buckets": [
-		{
-			"binding": "GALLERY",
-			"bucket_name": "balance-restore-gallery"
-		},
-		{
-			"bucket_name": "balance-restore-gallery",
-			"binding": "balance_restore_gallery",
-			"remote": true
-		}
-	],
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "balance-restore-db",
-			"database_id": "9ffddd1e-73b3-4a75-af53-44e5c4012823"
-		}
-	]
+  "name": "balance-restore",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-07-16",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*",
+      "/admin",
+      "/admin/*",
+      "/media/*"
+    ]
+  },
+  "r2_buckets": [
+    {
+      "binding": "GALLERY",
+      "bucket_name": "balance-restore-gallery"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "balance-restore-db",
+      "database_id": "9ffddd1e-73b3-4a75-af53-44e5c4012823"
+    }
+  ]
 }
