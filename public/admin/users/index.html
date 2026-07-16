@@ -1,1 +1,78 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Users</title><link rel="stylesheet" href="/admin/admin.css"></head><body><header class="admin-header"><strong>User management</strong><a href="/admin/">Back</a></header><main><div id="status" class="status">Loading…</div><section class="panel active"><h1>Create user</h1><form id="create"><div class="grid"><label>Email<input id="email" type="email" required></label><label>Name<input id="name" required></label><label>Role<select id="role"><option value="editor">Editor</option><option value="admin">Administrator</option></select></label><label>Temporary password<input id="password" type="password" minlength="12" required></label></div><button>Create user</button></form></section><section class="panel active"><h1>Existing users</h1><div id="users"></div></section></main><script src="/admin/users/users.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>User management</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<header class="admin-header">
+  <div><strong>User management</strong></div>
+  <div>
+    <a href="/admin/">Back</a>
+    <button id="logout" type="button">Logout</button>
+  </div>
+</header>
+
+<main>
+  <div id="status" class="status">Loading…</div>
+
+  <section class="panel active">
+    <h1>Create user</h1>
+
+    <form id="createForm" novalidate>
+      <div class="grid">
+        <label>
+          Email
+          <input
+            id="newEmail"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required>
+        </label>
+
+        <label>
+          Name
+          <input
+            id="newName"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required>
+        </label>
+
+        <label>
+          Role
+          <select id="newRole" name="role">
+            <option value="editor">Editor</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </label>
+
+        <label>
+          Temporary password
+          <input
+            id="newPassword"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="12"
+            required>
+        </label>
+      </div>
+
+      <button id="createUserButton" type="submit">Create user</button>
+    </form>
+  </section>
+
+  <section class="panel active">
+    <h1>Existing users</h1>
+    <div id="users"></div>
+  </section>
+</main>
+
+<script src="/admin/users/users.js"></script>
+</body>
+</html>
