@@ -108,9 +108,11 @@ async function usersRoute(req,env,url,s){
     const role=b.role==='admin'?'admin':'editor';
     const password=String(b.password||'');
 
-    if(!e||!/^\\S+@\\S+\\.\\S+$/.test(e)){
-      return json({error:'Enter a valid email address.'},400);
-    }
+   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!e || !emailPattern.test(e)) {
+  return json({ error: "Enter a valid email address." }, 400);
+}
     if(!name){
       return json({error:'Enter the user name.'},400);
     }
